@@ -45,9 +45,7 @@ class SampahController extends Controller
     }
 
 
-    public function show(Sampah $sampah)
-    {
-    }
+    public function show(Sampah $sampah) {}
 
     public function edit(string $id)
     {
@@ -85,12 +83,17 @@ class SampahController extends Controller
 
 
 
-    public function destroy(Sampah $sampah)
+    public function destroy(String $id)
     {
+        $sampah = Sampah::findOrFail($id);
+
         if ($sampah->gambar) {
             Storage::delete($sampah->gambar);
         }
+
         $sampah->delete();
-        return redirect()->route('pages.admin.sampah.index')->with('success', 'Sampah berhasil dihapus.');
+
+        Alert::success('Hore!', 'Data Berhasil Dihapus!')->autoclose(3000);
+        return redirect()->route('admin.sampah.index');
     }
 }

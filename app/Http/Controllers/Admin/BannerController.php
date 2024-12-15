@@ -95,12 +95,16 @@ class BannerController extends Controller
     }
 
 
-    public function destroy(Banner $banner)
+    public function destroy(String $id)
     {
+        $banner = Banner::findOrFail($id);
+
         if ($banner->file_banner) {
             Storage::disk('public')->delete($banner->file_banner);
         }
         $banner->delete();
-        return redirect()->route('admin.banner.index')->with('success', 'Banner berhasil dihapus.');
+
+        Alert::success('Hore!', 'Data Berhasil Dihapus!')->autoclose(3000);
+        return redirect()->route('admin.banner.index');
     }
 }

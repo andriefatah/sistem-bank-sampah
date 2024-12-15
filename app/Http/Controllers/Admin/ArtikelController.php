@@ -126,9 +126,4 @@ class ArtikelController extends Controller
 
         return redirect()->route('admin.artikel.index');
     }
-
-
-    public function destroy(Artikel $artikel)
-    {
-    }
 }

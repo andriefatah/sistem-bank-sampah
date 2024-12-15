@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('jumlah_pencairan', 15, 2);
             $table->timestamp('tanggal_pengajuan')->nullable();
             $table->timestamp('tanggal_proses')->nullable();
-            $table->enum('status', ['pending', 'disetujui', 'ditolak']);
+            $table->enum('status', ['pending', 'diproses', 'ditolak', 'selesai']);
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });

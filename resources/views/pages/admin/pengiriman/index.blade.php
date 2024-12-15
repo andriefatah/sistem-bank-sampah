@@ -41,25 +41,12 @@
                                 @forelse ($pengirimanSampah as $index => $pengiriman)
                                     <tr>
                                         <td>{{ $pengirimanSampah->firstItem() + $index }}</td>
-                                        <td>{{ $pengiriman->tanggal_pengiriman }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($pengiriman->tanggal_pengiriman)->format('d-m-Y') }}
+                                        </td>
                                         <td>{{ $pengiriman->kode_pengiriman }}</td>
                                         <td>{{ $pengiriman->pengepul->nama }}</td>
                                         <td>{{ $pengiriman->total_berat }}</td>
                                         <td>{{ $pengiriman->jumlah_jenis_sampah }}</td>
-                                        {{-- <td>
-                                        <form onsubmit="return confirm('Apakah Anda yakin?');"
-                                                action="{{ route('pengiriman.destroy', $pengiriman->id) }}" method="POST">
-                                                <a href="{{ route('pengiriman.edit', $pengiriman->id) }}"
-                                                    class="btn btn-sm btn-primary">
-                                                    <i class="fa-solid fa-pencil"></i> Edit
-                                                </a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">
-                                                    <i class="fa-solid fa-trash"></i> Hapus
-                                                </button>
-                                            </form>
-                                        </td> --}}
                                     </tr>
                                 @empty
                                     <tr>
