@@ -3,10 +3,18 @@
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header">
-            <a href="index.html" class="logo">
-                <img src="{{ asset('assets/img/kaiadmin/logo_dark.svg') }}" alt="navbar brand" class="navbar-brand"
-                    height="25">
-            </a>
+            @if (auth()->user()->role == 'admin')
+                <a href="{{ route('admin.dashboard') }}" class="logo">
+                    <img src="{{ asset('assets/img/kaiadmin/logo_dark.svg') }}" alt="navbar brand" class="navbar-brand"
+                        height="25">
+                </a>
+            @endif
+            @if (auth()->user()->role == 'petugas')
+                <a href="{{ route('petugas.dashboard') }}" class="logo">
+                    <img src="{{ asset('assets/img/kaiadmin/logo_dark.svg') }}" alt="navbar brand" class="navbar-brand"
+                        height="25">
+                </a>
+            @endif
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
                     <i class="gg-menu-right"></i>
